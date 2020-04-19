@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>vue的基本使用</title>
+</head>
+<body>
+  <script type="text/javascript" src="../vue_day02/lib/vue.js"></script>
+  <div id="app">
+    <input type="text" v-model="username">
+    <p>Hello{{username}}</p>
+  </div>
+  <script>
+    //创建一个vue实例
+    const vm = new Vue({  //配置对象
+      el:"#app",//element：选择器
+      data:{    //mvvm中的model(数据)
+        username:'luoyi'
+      }
+    });
+  </script>
+</body>
+</html>

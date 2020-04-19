@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vue的基本指令</title>
+</head>
+<script src="./lib/vue-2.4.0.js"></script>
+<body>
+
+  <div id="msg">
+    <!-- v.text指令。会覆盖标签中原有的内容。而占位符（插值表达式）只会替换自己这个占位符，不会把整个元素清空 -->
+    <!-- 当直接用占位符时，会有占位符一闪而过的现象。v-text默认没有一闪而过的现象。实际开发中，应结合实际情况选则 -->
+    <div v-text="msg1">啦啦啦</div>
+    <div v-clock>{{msg2}}你好</div>
+
+    <!-- v.text和插值表达式会将data中的数据作为字符串去处理。
+        v-html则会将data作为html标签去渲染 -->
+    <div v-html="msg3">啦啦啦</div>
+  </div>
+
+  <script>
+    var vue = new Vue({
+      el:"#msg",
+      data:{
+        msg1:'斯嘉丽-约翰逊',
+        msg2:'特朗普',
+        msg3:'<h1>牛逼的特朗普</h1>'
+      }
+    });
+  </script>
+
+</body>
+</html>

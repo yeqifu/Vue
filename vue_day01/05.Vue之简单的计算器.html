@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vue之简单的计算器</title>
+  <script src="./lib/vue-2.4.0.js"></script>
+</head>
+<body>
+
+  <div id="app">
+    <input type="text" v-model="number1">
+    <select v-model="opt">
+      <option value="+">+</option>
+      <option value="-">-</option>
+      <option value="*">*</option>
+      <option value="÷">÷</option>
+    </select>
+    <input type="text" v-model="number2">
+    <button @click="handerSum">=</button>
+    <input type="text" v-model="result">
+  </div>
+
+
+  <script>
+    var vue = new Vue({
+      el:"#app",
+      data:{
+        number1:0,
+        number2:0,
+        result:'0',
+        opt:'+'
+      },
+      methods:{
+        handerSum(){
+          switch (this.opt) {
+            case '+':
+                this.result = parseInt(this.number1)+parseInt(this.number2);
+              break;
+            case '-':
+                this.result = parseInt(this.number1)-parseInt(this.number2);
+              break;
+            case '*':
+                this.result = parseInt(this.number1)*parseInt(this.number2);
+              break;
+            case '÷':
+                this.result = parseInt(this.number1)/parseInt(this.number2);
+              break;
+            default:
+              break;
+          }
+        }
+      }
+    });
+  </script>
+  
+</body>
+</html>

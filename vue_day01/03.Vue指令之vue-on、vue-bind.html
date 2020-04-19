@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vue指令之vue-on、vue-bind</title>
+</head>
+<script src="./lib/vue-2.4.0.js"></script>
+<body>
+  
+  <div id="app">
+
+    <!--
+      v-bind:字面意思是绑定，是vue中提供的用户绑定属性的指令。v-bind可以缩写成  :
+      v-bind可以出现在任何地方
+      每个html标签都有一个属性，直接写属性时，传入的事文本
+      加上 v-bind 时，传入的是vue实例中的data -->
+    <button :title="msg">我是一个按钮</button>
+    
+    <!-- v-on:vue提供的事件绑定指令，可以简写成 @ -->
+    <button @click="show">我是一个按钮</button>
+  </div>
+
+  <script>
+    var vue = new Vue({
+      el:"#app",
+      data:{
+        msg:'我是按钮'
+      },
+      methods:{ //methods属性用于定义当前vue实例中所有可以调用的方法
+        show(){
+          alert('点我一下，你就会看到效果！')
+        }
+      }
+    });
+  </script>
+
+</body>
+</html>

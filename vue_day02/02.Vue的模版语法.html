@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vue的模版语法</title>
+  <script src="../vue_day02/lib/vue.js"></script>
+</head>
+<body>
+  <div id="app">
+    <p>双大括号表达式</p>
+    {{warehouse}}<br><br>
+    {{warehouse.toUpperCase()}}
+    <p v-text="warehouse"></p>  <!--textContent-->
+    <p v-html="warehouse"></p>  <!--innerHtml-->
+    <br>
+    <p>指令一：强制数据绑定</p>
+    <img v-bind:src="imgUrl"><br>
+    <img :src="imgUrl">
+  
+    <p>指令二：绑定事件监听</p>
+    <button v-on:click="test1">按钮一</button>
+    <button @click="test2(warehouse)">按钮二</button>
+  </div>
+<script>
+  const vm = new Vue({
+    el:'#app',
+    data:{
+      warehouse:'<a href="http://39.97.177.219:8888/">仓库管理系统  warehouse</a>',
+      imgUrl:'https://cn.vuejs.org/images/logo.png'
+    },
+    methods: {
+      test1(){
+        alert("稳扎稳打！");
+      },
+      test2(s){
+        alert(s);
+      }
+    }
+  });
+</script>
+</body>
+</html>

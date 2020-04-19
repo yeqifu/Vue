@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vue指令之vue-model</title>
+</head>
+<script src="./lib/vue-2.4.0.js"></script>
+<body>
+  
+  <div id="app">
+    <h1>{{msg}}</h1>
+    <!-- 
+      v-model指令可以实现表单元素和model中数据的双向绑定，
+      其中一方被修改时，另一方会同步展示。
+      注意：v-model只能用于表单元素中
+      v-bind只能用于单向绑定，当model中的数据被修改时，
+      v-bind绑定的位置会实时修改，而v-bind绑定的元素被修改时，model中的数据并不会被修改
+      -->
+    <input type="text" name="" id="" v-model="msg">
+    
+    <!-- v-on:vue提供的事件绑定指令，可以简写成 @ -->
+    <button @click="changeMsg">点我</button>
+  </div>
+
+  <script>
+    var vue = new Vue({
+      el:"#app",
+      data:{
+        msg:'我是一个按钮'
+      },
+      methods:{ //methods属性用于定义当前vue实例中所有可以调用的方法
+        changeMsg(){
+          this.changeMsg2()
+        },
+        changeMsg2(){
+          this.msg = '我现在不是按钮了'
+        }
+      }
+    });
+  </script>
+
+</body>
+</html>
