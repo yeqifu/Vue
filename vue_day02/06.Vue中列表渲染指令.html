@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vue中列表渲染指令</title>
+  <script src="../vue_day02/lib/vue.js"></script>
+</head>
+<body>
+  <div id="app">
+    <p>v-for遍历数组</p>
+    <ul>
+      <li v-for="(p,index) in persons" :key="index">
+        {{index}}--{{p.name}}--{{p.age}}
+        --<button @click="deleteP(index)">删除</button>
+        --<button @click="updateP(index,{name:'Scarlett Johansson',age:35})">修改</button>
+      </li>
+    </ul>
+    <p>v-for遍历对象</p>
+    <ul>
+      <li v-for="(value,key) in persons[1]" :key="value">
+        {{value}}---{{key}}
+      </li>
+    </ul>
+  </div>
+  <script type="text/javascript">
+    //vue本身只是监视了persons的改变，没有persons里数组的变化
+    const vm = new Vue({
+      el:'#app',
+      data:{
+        persons:[
+          {name:'Jack',age:28},
+          {name:'Rose',age:27},
+          {name:'Bob',age:25},
+          {name:'Tom',age:18},
+        ]
+      },
+      methods: {
+        deleteP(index){
+          //调用了不是原生数组的splice(),而是一个变异(重写)方法
+          this.persons.splice(index,1)
+        },
+        updateP(index,newP){
+          this.persons.splice(index,1,newP)
+        }
+      },
+    });
+  </script>
+</body>
+</html>
