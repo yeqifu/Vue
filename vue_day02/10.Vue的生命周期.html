@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vue的生命周期</title>
+  <script src="../vue_day02/lib/vue.js"></script>
+</head>
+<body>
+  <!-- 
+    1、初始化显示
+    beforeCreate()
+    created()
+    beforeMount()
+    mounted()
+    2、显示更新
+    beforeUpdate()
+    update()
+    3、销毁Vue实例
+    beforeDestroy()
+    destroy()
+  -->
+  <div id="app">
+    <button @click="destroyVue">destroy VM</button>
+    <p v-show="isShow">戒骄戒躁，稳扎稳打</p>
+  </div>
+  <script type="text/javascript">
+    const vm = new Vue({
+      el:"#app",
+      data:{
+        isShow:true
+      },
+      //1、初始化显示
+      beforeCreate() {
+        console.log('beforeCreate')
+      },
+      created() {
+        console.log('created')
+      },
+      beforeMount() {
+        console.log('beforeMount')
+      },
+      mounted() {
+        this.intervalId=setInterval(()=>{
+          console.log('------mounted')
+          this.isShow=!this.isShow
+        },1000)
+      },
+      //2、显示更新
+      beforeUpdate() {
+        console.log('beforeUpdate')
+      },
+      updated() {
+        console.log('updated')
+      },
+      //3、死亡
+      beforeDestroy() {
+        console.log('beforeDestroy')
+        //执行收尾工作，销毁定时器
+        clearInterval(this.intervalId)
+      },
+      destroyed() {
+        console.log('destroyed')
+      },
+      methods: {
+        //销毁Vue实例
+        destroyVue(){
+          this.$destroy()
+        }
+      },
+    });
+  </script>
+</body>
+</html>

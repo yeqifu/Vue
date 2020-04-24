@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vue中的过渡与动画</title>
+  <script src="../vue_day02/lib/vue.js"></script>
+  <style>
+    /*指定过渡样式*/
+    .xxx-enter-active, .xxx-leave-active {
+      transition: opacity 1s
+    }
+    /*指定隐藏时的样式*/
+    .xxx-enter, .xxx-leave-to {
+      opacity: 0;
+    }
+    .move-enter-active {
+      transition: all 1s
+    }
+    .move-leave-active {
+      transition: all 3s
+    }
+    .move-enter, .move-leave-to {
+      opacity: 0;
+      transform: translateX(20px)
+    }
+  </style>
+</head>
+<body>
+  <!-- 
+    1) 操作 css 的 trasition 或 animation 
+    2) vue 会给目标元素添加/移除特定的 class 
+    3) 过渡的相关类名xxx-enter-active: 指定显示的 
+                    transition xxx-leave-active: 指定隐藏的 
+                    transition xxx-enter/xxx-leave-to: 指定隐藏时的样式
+  -->
+  <div id="demo">
+    <button @click="show = !show">Toggle</button>
+    <transition name="xxx">
+      <p v-show="show">hello</p>
+    </transition>
+  </div>
+  <hr>
+  <div id="demo2">
+    <button @click="show = !show">Toggle2</button>
+    <transition name="move">
+      <p v-show="show">hello</p>
+    </transition>
+  </div>
+  <script type="text/javascript">
+    new Vue({
+      el: '#demo',
+      data: {
+        show: true
+      }
+    });
+    new Vue({
+      el: '#demo2',
+      data: {
+        show: true
+      }
+    });
+  </script>
+</body>
+</html>
