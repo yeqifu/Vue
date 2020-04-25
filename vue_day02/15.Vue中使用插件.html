@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vue中使用插件</title>
+</head>
+<body>
+  <div id="app">
+    <p v-my-directive="msg"></p>
+  </div>
+  <script src="../vue_day02/lib/vue.js"></script>
+  <script src="../vue_day02/lib/vue-myPlugin.js"></script>
+  <script type="text/javascript">
+    //声明使用插件
+    Vue.use(MyPlugin)
+    Vue.myGlobalMethod()
+    const vm = new Vue({
+      el:"#app",
+      data:{
+        msg:'I love you'
+      }
+    });
+    vm.$myMethod()
+  </script>
+</body>
+</html>
