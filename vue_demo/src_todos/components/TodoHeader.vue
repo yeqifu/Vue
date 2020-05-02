@@ -7,7 +7,10 @@
 <script>
   export default {
     props:{
-      
+      addTodo:{
+        type:Function,
+        required:true
+      }
     },
     data () {
       return {
@@ -28,13 +31,9 @@
           complete:false
         }
         //3.添加的todos中
-        //this.addTodo(todo)
-        
-        //触发自定义事件：addTodo
-        //第一个为事件名称，第二个为参数
-        this.$emit('addTodo',todo)
+        this.addTodo(todo)
 
-        //4.清除表单
+        //4.重置表单
         this.title=''
       }
     }

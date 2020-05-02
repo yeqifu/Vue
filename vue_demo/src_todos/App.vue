@@ -2,8 +2,7 @@
     <div class="todo-container">
     <div class="todo-wrap">
       <!--使用组件标签-->
-      <!-- <TodoHeader @addTodo="addTodo" />   给TodoHeader标签对象绑定addTodo事件监听 -->
-      <todo-header ref="header"/>
+      <TodoHeader :addTodo="addTodo"/>   <!--必须闭合-->
       <TodoList :todos="todos" :deleteTodo="deleteTodo"/>
       <TodoFooter :todos="todos" :deleteAllTodo="deleteAllTodo" :selectAll="selectAll"/>
     </div>
@@ -27,12 +26,6 @@
         //从localStorage读取todos
         todos: JSON.parse(window.localStorage.getItem('todos_key') || '[]')
       }
-    },
-    mounted() {
-      //执行异步代码
-      //给<todo-header/>绑定addTodo事件监听
-      //this.$on('addTodo',this.addTodo)
-      this.$refs.header.$on('addTodo',this.addTodo)
     },
     methods: {
       //1.添加代办事项
