@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>父组件与子组件</title>
+  <script src="./lib/vue.js"></script>
+</head>
+<body>
+  <div id="app">
+    <parent-com></parent-com>
+  </div>
+</body>
+
+<script>
+  let childCom = Vue.extend({
+    template:`<div>我是子组件！</div>`
+  });
+  let parentCom = Vue.extend({
+    template:`
+      <div>
+        <div>我是父组件！</div>
+        <child-com></child-com>
+      </div>
+    `,
+    components:{
+      childCom
+    }
+  });
+  let vm = new Vue({
+    el:'#app',
+    components:{
+      parentCom
+    }
+  });
+</script>
+
+</html>

@@ -28,16 +28,17 @@
     <button @click="test3('test3',$event)">test3</button>
 
     <h2>2.事件修饰符</h2>
-    <div style="width: 200px;height: 150px;background-color: skyblue;" @click="test4($event)">
+    <div style="width: 200px;height: 150px;background-color: rgb(110, 202, 238);" @click="test4($event)">
       <div style="width: 100px;height: 50px;background-color: darkorange;" @click.stop="test5($event)">哈哈</div>
     </div>
 
-    <a href="http://39.97.177.219:8888/sys/toLogin" @click.prevent="test6">warehouse</a>
+    <a href="http://39.97.177.219:8888/sys/toLogin" @click.stopPropagation()="test6">warehouse</a>
 
     <h2>3.按键修饰符</h2>
     <input type="text" @keyup.13="test7">
     <input type="text" @keyup.enter="test7">
   </div>
+  
   <script type="text/javascript">
     const vm = new Vue({
       el:"#app",

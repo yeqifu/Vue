@@ -1,5 +1,4 @@
 <template>
-
   <li @mouseenter="handerEnter(true)" @mouseleave="handerEnter(false)" :style="{background:bgColor}">
     <label>
       <input type="checkbox" v-model="todo.complete"/>
