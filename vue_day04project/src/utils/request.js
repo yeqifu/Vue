@@ -1,4 +1,5 @@
-import axios from 'axios'
+import axios from 'axios';
+import { Message } from 'element-ui';
 // 创建axios
 const service = axios.create({
   baseURL: 'http://localhost:8080/api',
@@ -25,12 +26,12 @@ service.interceptors.response.use(
     if(code === 200) {
       return res
     }else {
-      alert('请求失败！')
+      Message.error('请求失败！')
       return Promise.reject('请求异常！')
     }
   },
   err => {
-    alert('请求失败！')
+    Message.error('请求失败！')
     return Promise.reject('请求异常！')
   }
 )

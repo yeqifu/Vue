@@ -5,11 +5,16 @@ import VueRouter from 'vue-router'
 Vue.use(VueRouter)
 //定义路由
 const routes = [
+  // 默认的路由为部门管理
+  {
+    path:'/',
+    redirect:'/department'
+  },
   {
     path:'/department',
     component:()=> import('@/views/department'),
     meta:{
-      title:'部门'
+      title:'部门管理'
     }
   },
   {

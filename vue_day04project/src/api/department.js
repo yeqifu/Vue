@@ -2,7 +2,7 @@
 import request from '@/utils/request'
 const group_name = 'department'
 //创建一个对象，用于封装请求api
-let data = {
+export default {
   getDepartmentList(){
     //返回一个request
     return new request({
@@ -11,5 +11,3 @@ let data = {
     })
   }
 }
-//导出
-export default data
